@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Cloning submodules and install procedure
+for dir in `find . -maxdepth 1 -mindepth 1 -type d`
+do
+	cd `echo "$dir" | cut -c 3-`
+	[[ -e .gitmodules ]] && git submodule update --init
+	[[ -e install ]] && ./install
+	cd -
+done
