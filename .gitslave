@@ -1,4 +1,3 @@
-"git@github.com:iwfmp/emacs.git" "emacs"
 "git@github.com:iwfmp/zsh.git" ".zsh"
 "git@github.com:iwfmp/vim.git" ".vim"
 "git@github.com:iwfmp/tmux.git" ".tmux"
