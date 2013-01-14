@@ -4,3 +4,4 @@
 "git@github.com:iwfmp/tmux.git" ".tmux"
 "git@github.com:iwfmp/slmenu.git" ".slmenu"
 "git@github.com:iwfmp/midnight-commander.git" ".mc"
+"git@github.com:iwfmp/git.git" ".gitl"
