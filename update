@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Cloning submodules and install procedure
+programVars="tmux mc"
+for programVar in $programVars
+do
+	cd /usr/local/share/$programVars
+	sudo git pull || sudo hg pull
+	[[ -e "autogen.sh" ]] && sudo ./autogen.sh
+	[[ -e "configure" ]] && sudo ./configure --prefix=/usr/local
+	[[ -e "makefile" ]] && sudo make &&	sudo make clean install
+done
