@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Cloning submodules and install procedure
-programVars="tmux mc"
+programVars="tmux mc keepassc slmenu"
 for programVar in $programVars
 do
 	cd /usr/local/share/$programVars
@@ -9,4 +9,12 @@ do
 	[[ -e "autogen.sh" ]] && sudo ./autogen.sh
 	[[ -e "configure" ]] && sudo ./configure --prefix=/usr/local
 	[[ -e "makefile" ]] && sudo make &&	sudo make clean install
+done
+
+for dir in `find . -maxdepth 1 -mindepth 1 -type d`
+do
+  cd `echo "$dir" | cut -c 3-`
+  [[ -e .gitmodules ]] && git submodule foreach git pull origin master
+  [[ -e update ]] && ./update
+  cd -
 done
