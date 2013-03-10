@@ -11,15 +11,16 @@ if [[ -z `command -v "gits"` ]]; then
 fi
 
 # Initialize git repository and prepare git slave.
+cd ~
 git init
 git remote add origin git@github.com:iwfmp/dot-f-ings.git
 git pull origin master
 gits prepare
 
 # Cloning submodules and install procedure
-for dir in `find . -maxdepth 1 -mindepth 1 -type d`
+for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
-  cd `echo "$dir" | cut -c 3-`
+  cd $dir
   [[ -e .gitmodules ]] && git submodule update --init
   [[ -e install ]] && ./install
   cd -
