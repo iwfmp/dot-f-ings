@@ -11,11 +11,11 @@ if [[ -z `command -v "gits"` ]]; then
 fi
 
 # Initialize git repository and prepare git slave.
-cd ~
+cd $HOME
 git init
 git remote add origin git@github.com:iwfmp/dot-f-ings.git
 git pull origin master
-gits prepare
+gits populate
 
 # Cloning submodules and install procedure
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
