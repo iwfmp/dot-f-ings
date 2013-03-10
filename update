@@ -1,20 +1,23 @@
 #!/bin/bash
 
+scriptDir=`pwd`
+
 # Cloning submodules and install procedure
-programVars="tmux mc keepassc slmenu"
+programVars="tmux mc slmenu"
 for programVar in $programVars
 do
-	cd /usr/local/share/$programVars
+	cd /usr/local/share/${programVar}
 	sudo git pull || sudo hg pull
 	[[ -e "autogen.sh" ]] && sudo ./autogen.sh
 	[[ -e "configure" ]] && sudo ./configure --prefix=/usr/local
 	[[ -e "makefile" ]] && sudo make &&	sudo make clean install
 done
 
+cd $scriptDir
 for dir in `find . -maxdepth 1 -mindepth 1 -type d`
 do
   cd `echo "$dir" | cut -c 3-`
-  [[ -e .gitmodules ]] && git submodule foreach git pull origin master
+  [[ -e .gitmodules ]] && git submodule foreach git pull origin master && git commit -a -m "updating plugins"
   [[ -e update ]] && ./update
   cd -
 done
