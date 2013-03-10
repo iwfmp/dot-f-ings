@@ -5,3 +5,5 @@ for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
   rm -rf $dir
 done
+rm `git ls-tree -r master --name-only`
+rm -rf .git
