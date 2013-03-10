@@ -1,26 +1,26 @@
 #!/bin/bash
 
 # Install git and git slave, if not yet present.
-[[ -z `command -v git`]] && sudo apt-get install -y git-core
+[[ -z `command -v git` ]] && sudo apt-get install -y git-core
 if [[ -z `command -v "gits"` ]]; then
   cd /usr/local/share
   sudo git clone git://gitslave.git.sourceforge.net/gitroot/gitslave/gitslave
   cd gitslave
   sudo make
   sudo make install -C contrib
-done
+fi
 
 # Initialize git repository and prepare git slave.
 git init
-git add remote origin git@github.com:iwfmp/dot-f-ings.git
+git remote add origin git@github.com:iwfmp/dot-f-ings.git
 git pull origin master
 gits prepare
 
 # Cloning submodules and install procedure
 for dir in `find . -maxdepth 1 -mindepth 1 -type d`
 do
-	cd `echo "$dir" | cut -c 3-`
-	[[ -e .gitmodules ]] && git submodule update --init
-	[[ -e install ]] && ./install
-	cd -
+  cd `echo "$dir" | cut -c 3-`
+  [[ -e .gitmodules ]] && git submodule update --init
+  [[ -e install ]] && ./install
+  cd -
 done
