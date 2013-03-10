@@ -7,10 +7,12 @@ programVars="tmux mc slmenu"
 for programVar in $programVars
 do
 	cd /usr/local/share/${programVar}
-	sudo git pull || sudo hg pull
-	[[ -e "autogen.sh" ]] && sudo ./autogen.sh
-	[[ -e "configure" ]] && sudo ./configure --prefix=/usr/local
-	[[ -e "makefile" ]] && sudo make &&	sudo make clean install
+  sudo git pull || sudo hg pull
+  if [[ `sudo git fetch && git rev-list HEAD...origin/master --count` > 0 ]]; then
+  	[[ -e "autogen.sh" ]] && sudo ./autogen.sh
+  	[[ -e "configure" ]] && sudo ./configure --prefix=/usr/local
+  	[[ -e "makefile" ]] && sudo make &&	sudo make clean install
+  fi
 done
 
 cd $scriptDir
