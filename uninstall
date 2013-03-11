@@ -7,3 +7,4 @@ do
 done
 rm `git ls-tree -r master --name-only`
 rm -rf .git
+find -L $HOME -type l -delete
