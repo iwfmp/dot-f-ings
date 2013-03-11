@@ -1,3 +1,4 @@
+*
 /.zsh/
 /.vim/
 /.tmux/
@@ -6,3 +7,9 @@
 /.gitl/
 /.local/
 /.emacs.d/
+
+!install
+!uninstall
+!update
+!.gitignore
+!.gitslave
