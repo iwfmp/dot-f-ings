@@ -16,9 +16,9 @@ do
 done
 
 cd $scriptDir
-for dir in `find . -maxdepth 1 -mindepth 1 -type d`
+for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
-  cd `echo "$dir" | cut -c 3-`
+  cd $dir
   [[ -e .gitmodules ]] && git submodule foreach git pull origin master && git commit -a -m "updating plugins"
   [[ -e update ]] && ./update
   cd -
