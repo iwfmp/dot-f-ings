@@ -7,7 +7,7 @@ if [[ -z `command -v "gits"` ]]; then
   sudo git clone git://gitslave.git.sourceforge.net/gitroot/gitslave/gitslave
   cd gitslave
   sudo make
-  sudo make install -C contrib
+  sudo make install 
 fi
 
 # Initialize git repository and prepare git slave.
