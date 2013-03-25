@@ -11,6 +11,11 @@ if [[ -z `command -v "gits"` ]]; then
 fi
 
 # Initialize git repository and prepare git slave.
+if [[ -z `command -v "gits"` ]]; then
+  echo "Something went wrong. Check it out, bithc."
+  exit
+fi
+
 cd $HOME
 git init
 git remote add origin git@github.com:iwfmp/dot-f-ings.git
