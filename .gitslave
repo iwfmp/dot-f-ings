@@ -4,5 +4,5 @@
 "git@github.com:iwfmp/slmenu.git" ".slmenu"
 "git@github.com:iwfmp/midnight-commander.git" ".mc"
 "git@github.com:iwfmp/git.git" ".gitl"
-"git@github.com:iwfmp/linux.git" ".local"
+"git@github.com:iwfmp/linux.git" ".local.d"
 "git@github.com:iwfmp/emacs.git" ".emacs.d"
