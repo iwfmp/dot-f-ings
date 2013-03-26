@@ -3,17 +3,17 @@
 # Install git and git slave, if not yet present.
 [[ -z `command -v git` ]] && sudo apt-get install -y git-core
 if [[ -z `command -v "gits"` ]]; then
-  cd /usr/local/share
-  sudo git clone git://gitslave.git.sourceforge.net/gitroot/gitslave/gitslave
-  cd gitslave
-  sudo make
-  sudo make install 
+    cd /usr/local/share
+    sudo git clone git://gitslave.git.sourceforge.net/gitroot/gitslave/gitslave
+    cd gitslave
+    sudo make
+    sudo make install
 fi
 
 # Initialize git repository and prepare git slave.
 if [[ -z `command -v "gits"` ]]; then
-  echo "Something went wrong. Check it out, bithc."
-  exit
+    echo "Something went wrong. Check it out, bithc."
+    exit
 fi
 
 cd $HOME
@@ -25,8 +25,8 @@ gits populate
 # Cloning submodules and install procedure
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
-  cd $dir
-  [[ -e .gitmodules ]] && git submodule update --init
-  [[ -e install ]] && ./install
-  cd -
+    cd $dir
+    [[ -e .gitmodules ]] && git submodule update --init
+    [[ -e install ]] && ./install
+    cd -
 done
