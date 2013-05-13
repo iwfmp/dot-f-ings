@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Add the ability to use apt-add-repository, else it doesn't exist.
+[[ -z `command -v apt-add-repository` ]] && sudo apt-get install python-software-properties
+
 # Install git and git slave, if not yet present.
 [[ -z `command -v git` ]] && sudo apt-get install -y git
 if [[ -z `command -v "gits"` ]]; then
