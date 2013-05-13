@@ -6,7 +6,7 @@ scriptDir=`pwd`
 programVars="tmux mc slmenu"
 for programVar in $programVars
 do
-	cd /usr/local/share/${programVar}
+	cd /usr/local/src/${programVar}
   sudo git pull || sudo hg pull
   if [[ `sudo git fetch && git rev-list HEAD...origin/master --count` > 0 ]]; then
   	[[ -e "autogen.sh" ]] && sudo ./autogen.sh
