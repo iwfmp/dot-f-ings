@@ -29,7 +29,7 @@ gits populate
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
     cd $dir
-    [[ -e .gitmodules ]] && git submodule update --init
+    [[ -e .giternal.yml ]] && giternal update
     [[ -e install ]] && ./install
     cd -
 done

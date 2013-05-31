@@ -19,7 +19,7 @@ cd $scriptDir
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
   cd $dir
-  [[ -e .gitmodules ]] && git submodule foreach git pull origin master && git commit -a -m "updating plugins"
+  [[ -e .giternal.yml ]] && giternal update
   [[ -e update ]] && ./update
   cd -
 done
