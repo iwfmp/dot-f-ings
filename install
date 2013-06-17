@@ -19,11 +19,13 @@ if [[ -z `command -v "gits"` ]]; then
     exit
 fi
 
-cd $HOME
-git init
-git remote add origin git@github.com:iwfmp/dot-f-ings.git
-git pull origin master
-gits populate
+if [[ -f ~/.gitslave ]]; then
+    cd $HOME
+    git init
+    git remote add origin git@github.com:iwfmp/dot-f-ings.git
+    git pull origin master
+    gits populate
+fi
 
 # Cloning submodules and install procedure
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
