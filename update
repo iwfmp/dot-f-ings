@@ -1,8 +1,5 @@
 #!/bin/bash
 
-scriptDir=`pwd`
-
-cd $scriptDir
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
   cd $dir
