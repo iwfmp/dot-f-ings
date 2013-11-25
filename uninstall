@@ -8,3 +8,6 @@ done
 rm `git ls-tree -r master --name-only`
 rm -rf .git
 find -L $HOME -type l -delete
+
+# Remove Gnome config
+rm -rf .gnome .gnome2 .gnome3 .gconf .gconfd .metacity .cache .dbus .dmrc .mission-control .config/dconf/user
