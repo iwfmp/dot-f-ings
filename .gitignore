@@ -9,6 +9,7 @@
 /.emacs.d/
 
 !install
+!install-mac
 !uninstall
 !update
 !.gitignore

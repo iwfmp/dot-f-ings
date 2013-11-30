@@ -1,0 +1,59 @@
+#!/bin/bash
+
+xcode-select --install
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go/install)"
+brew update && brew upgrade
+brew install midnight-commander zsh ack vim
+brew install git tig git-flow gitslave
+brew install tmux wemux
+
+gem install tmuxinator giternal compass --no-ri --no-rdoc
+
+curl -s https://raw.github.com/fbeeper/fBootstrap/master/git/git.sh | sh
+
+if [[ -f ~/.gitslave ]]; then
+    cd $HOME
+    git init
+    git remote add origin git@github.com:iwfmp/dot-f-ings.git
+    git pull origin master
+    gits populate
+fi
+
+# Cloning submodules and install procedure
+for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
+do
+    cd $dir
+    [[ -e .giternal.yml ]] && giternal update
+    cd -
+done
+
+ln -sf $HOME/.emacs.d/init/.emacs.el $HOME/.emacs > /dev/null 2>&1
+ln -sf $HOME/.git.d/init/.gitconfig $HOME/ > /dev/null 2>&1
+ln -sf $HOME/.git.d/init/.tigrc $HOME/ > /dev/null 2>&1
+ln -sf $HOME/.local.d/lib/spot/spot.sh $PWD/bin/spot > /dev/null 2>&1
+ln -sf $HOME/.local.d/lib/bd/bd $PWD/bin/bd > /dev/null 2>&1
+ln -sf $HOME/.local.d/lib/fzf/fzf $PWD/bin/fzf > /dev/null 2>&1
+ln -sf $HOME/.tmux/init/.tmux.conf $HOME/ > /dev/null 2>&1
+ln -sf $HOME/.tmux/init/.tmux-powerlinerc $HOME/ > /dev/null 2>&1
+ln -sf $HOME/.tmux/init/powerline.sh $HOME/.tmux/lib/tmux-powerline/themes/ > /dev/null 2>&1
+
+# Link configuration to $HOME directory.
+initScripts="zlogout zshenv zshrc"
+for initScript in $initScripts; do
+	ln -s $HOME/.zsh/init/.${initScript} $HOME/ > /dev/null 2>&1
+done
+
+[[ ! -d $HOME/.fonts ]] && mkdir $HOME/.fonts
+ln -sf $PWD/lib/ubuntu-mono-powerline $HOME/.fonts/ubuntu-mono-powerline
+fc-cache -vf $HOME/.fonts > /dev/null 2>&1
+
+chsh -s /bin/zsh
+
+cd $HOME/.zsh/lib/zsh-solarized
+./set_dark.sh
+cd -
+
+cd $HOME
+rm .bash*  > /dev/null 2>&1
+rm .profile  > /dev/null 2>&1
+# compaudit | xargs chmod 664
