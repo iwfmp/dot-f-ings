@@ -45,13 +45,12 @@ chsh -s /bin/zsh
 rm $HOME/.bash*  > /dev/null 2>&1
 rm $HOME/.profile  > /dev/null 2>&1 
 
-brew cask install aquamacs adium atext bartender burn ccleaner cinch clamxav \
-cloudapp cord cyberduck divvy filezilla firefox flux google-chrome google-drive \
-google-music-manager growlnotify handbrake hazel iterm2 keepassx keyremap4macbook licecap \
-linkinus little-snitch macvim netnewswire nvalt onyx path-finder postbox quicksilver \
-screenhero shiftit shortcat simple-comic sizeup skim skitch skype sparrow spectacle \
-sublime-text teamviewer textexpander things time-out transmission tunnelblick unison \
-viscosity vlc --force
+brew cask install emacs quicksilver iterm2 keepassx onyx skype spectacle sublime-text time-out
+# brew cask install adium burn clamxav cord cyberduck filezilla cloudapp screenhero tunnelblick licecap skitch nvalt netnewswire vlc fluid
+# brew cask install google-drive unison firefox handbrake keyremap4macbook google-music-manager skim simple-comic transmission teamviewer
+# brew cask install atext alfred bartender growlnotify linkinus little-snitch path-finder shortcat sparrow textexpander viscosity things hazel
+# ? OmniFocus
+# Inky, Epic Browser, Bean, Tresorit, SpotFlux, Meld
 
 cd $HOME/Downloads
 curl -o Solarized-Dark.itermcolors http://www.iterm2.com/hostedcolors/Solarized%20Dark.itermcolors
