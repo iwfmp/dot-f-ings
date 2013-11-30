@@ -7,7 +7,7 @@ brew install midnight-commander zsh ack vim
 brew install git tig git-flow gitslave
 brew install tmux wemux
 
-gem install tmuxinator giternal compass --no-ri --no-rdoc
+sudo gem install tmuxinator giternal compass --no-ri --no-rdoc
 
 curl -s https://raw.github.com/fbeeper/fBootstrap/master/git/git.sh | sh
 
