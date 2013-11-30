@@ -45,7 +45,7 @@ chsh -s /bin/zsh
 rm $HOME/.bash*  > /dev/null 2>&1
 rm $HOME/.profile  > /dev/null 2>&1 
 
-brew cask install burn adium atext bartender ccleaner cinch clamxav \
+brew cask install aquamacs adium atext bartender burn ccleaner cinch clamxav \
 cloudapp cord cyberduck divvy filezilla firefox flux google-chrome google-drive \
 google-music-manager growlnotify handbrake hazel iterm2 keepassx keyremap4macbook licecap \
 linkinus little-snitch macvim netnewswire nvalt onyx path-finder postbox quicksilver \
