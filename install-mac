@@ -30,30 +30,24 @@ done
 ln -sf $HOME/.emacs.d/init/.emacs.el $HOME/.emacs > /dev/null 2>&1
 ln -sf $HOME/.git.d/init/.gitconfig $HOME/ > /dev/null 2>&1
 ln -sf $HOME/.git.d/init/.tigrc $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.local.d/lib/spot/spot.sh $PWD/bin/spot > /dev/null 2>&1
-ln -sf $HOME/.local.d/lib/bd/bd $PWD/bin/bd > /dev/null 2>&1
-ln -sf $HOME/.local.d/lib/fzf/fzf $PWD/bin/fzf > /dev/null 2>&1
 ln -sf $HOME/.tmux/init/.tmux.conf $HOME/ > /dev/null 2>&1
 ln -sf $HOME/.tmux/init/.tmux-powerlinerc $HOME/ > /dev/null 2>&1
+ln -s $HOME/.zsh/init/.zlogout $HOME/ > /dev/null 2>&1
+ln -s $HOME/.zsh/init/.zshenv $HOME/ > /dev/null 2>&1
+ln -s $HOME/.zsh/init/.zshrc $HOME/ > /dev/null 2>&1
+
+ln -sf $HOME/.local.d/lib/spot/spot.sh $HOME/.local.d/bin/spot > /dev/null 2>&1
+ln -sf $HOME/.local.d/lib/bd/bd $HOME/.local.d/bin/bd > /dev/null 2>&1
+ln -sf $HOME/.local.d/lib/fzf/fzf $HOME/.local.d/bin/fzf > /dev/null 2>&1
 ln -sf $HOME/.tmux/init/powerline.sh $HOME/.tmux/lib/tmux-powerline/themes/ > /dev/null 2>&1
-
-# Link configuration to $HOME directory.
-initScripts="zlogout zshenv zshrc"
-for initScript in $initScripts; do
-	ln -s $HOME/.zsh/init/.${initScript} $HOME/ > /dev/null 2>&1
-done
-
-[[ ! -d $HOME/.fonts ]] && mkdir $HOME/.fonts
-ln -sf $PWD/lib/ubuntu-mono-powerline $HOME/.fonts/ubuntu-mono-powerline
-fc-cache -vf $HOME/.fonts > /dev/null 2>&1
 
 chsh -s /bin/zsh
 
-cd $HOME/.zsh/lib/zsh-solarized
-./set_dark.sh
-cd -
+cd $HOME/Downloads
+curl -o Solarized-Dark.itermcolors http://www.iterm2.com/hostedcolors/Solarized%20Dark.itermcolors
+defaults write net.sourceforge.iTerm Displays -dict-add Solarized-Dark < Solarized-Dark.itermcolors
+BOOKMARKS=`defaults read net.sourceforge.iTerm Bookmarks | sed 's/\("Display Profile" = \)"[^"]*";/\1"Solarized-Dark";/'`
+defaults write net.sourceforge.iTerm Bookmarks "$BOOKMARKS"
 
-cd $HOME
-rm .bash*  > /dev/null 2>&1
-rm .profile  > /dev/null 2>&1
-# compaudit | xargs chmod 664
+rm $HOME/.bash*  > /dev/null 2>&1
+rm $HOME/.profile  > /dev/null 2>&1
