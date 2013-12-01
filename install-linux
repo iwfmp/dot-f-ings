@@ -68,8 +68,8 @@ if [[ -z `command -v "wemux"` ]]; then
 fi
 
 if [[ -z `command -v "hub"` ]]; then
-    $ curl http://hub.github.com/standalone -sLo ~/bin/hub
-    $ chmod +x ~/bin/hub
+    $ curl http://hub.github.com/standalone -sLo $HOME/bin/hub
+    $ chmod +x $HOME/bin/hub
 fi
 
 if [[ -z `command -v keepassc` ]]; then
@@ -104,7 +104,11 @@ sudo apt-get upgrade && sudo apt-get clean && sudo apt-get autoremove
 cd $HOME/Downloads
 git clone https://github.com/Lokaltog/powerline-fonts
 cd powerline-fonts
-mv * ~/.fonts/
-fc-cache -vf $HOME/.fonts > /dev/null 2>&1
+mv * $HOME/.fonts/
 cd ..
 rm -rf powerline-fonts
+
+mkdir $HOME/.fonts.conf.d
+cp $HOME/.local.d/lib/powerline/font/PowerlineSymbols.otf $HOME/.fonts/
+cp $HOME/.local.d/lib/powerline/font/10-powerline-symbols.conf $HOME/.fonts/
+fc-cache -vf $HOME/.fonts > /dev/null 2>&1
