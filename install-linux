@@ -1,13 +1,20 @@
 #!/bin/bash
 
-# Add the ability to use apt-add-repository, else it doesn't exist.
-sudo apt-get install -y python-software-properties software-properties-common gconf2 xclip xsel zsh ack git-flow
+# ============================================================================================================================
+# * Basic packages
+# ============================================================================================================================
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install -y python-software-properties software-properties-common gconf2 gnome-panel xclip xsel gnome-panel indicator-weather
+sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh rkhunter gnupg zsh ack git-flow
+sudo apt-get install -y vlc pidgin thunderbird abiword gimp flashplugin-installer kupfer remmina xchat fogger nautilus-dropbox
 
+# ============================================================================================================================
+# * Packages from PPAs
+# ============================================================================================================================
 sudo add-apt-repository -y ppa:aguignard/ppa/ubuntu `# tig`
 sudo add-apt-repository -y ppa:cassou/emacs `# emacs`
 sudo add-apt-repository -y ppa:alexx2000/doublecmd `# double commander`
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-2 `# sulime text 2`
-sudo add-apt-repository -y ppa:skype-wrapper/ppa `# skype`
 sudo apt-add-repository -y ppa:blueyed/ppa `# vim`
 sudo add-apt-repository -y ppa:fkrull/deadsnakes `# python3`
 sudo add-apt-repository -y ppa:eugenesan/ppa `# midnight commander`
@@ -16,9 +23,30 @@ sudo add-apt-repository -y ppa:chris-lea/node.js `# node`
 sudo add-apt-repository -y ppa:nginx/stable `# nginx`
 sudo add-apt-repository -y ppa:iaz/git `# git`
 sudo add-apt-repository -y ppa:mercurial-ppa/releases `# mercurial`
+sudo add-apt-repository -y ppa:keepassx/daily `# keepassx`
+sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc) partner" `# skype`
+sudo add-apt-repository -y ppa:skype-wrapper/ppa `# skype-wrapper`
+sudo apt-get update && sudo apt-get upgrade
 
-sudo apt-get install -y tig emacs-snapshot doublecmd-qt skype vim python3.3 python-dev3.3 mc tmux node nginx git mercurial sublime-text-2
+sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python-dev3.3 mc tmux
+sudo apt-get install -y skype skype-wrapper mercurial sublime-text-2 keepassx nginx git node
 
+# ============================================================================================================================
+# * Manual install packages
+# ============================================================================================================================
+if [[ -z `command -v "quicktile"` ]]; then
+    sudo apt-get install -y python-xlib python-dbus python-wnck
+    cd /usr/local/src
+    sudo git clone https://github.com/ssokolow/quicktile
+    cd quicktile
+    sudo ./setup.py install
+fi
+
+if [[ -z `command -v "google-chrome"` ]]; then
+    sudo apt-get install -y curl libxss1 libnss3-1d
+    wget -q -E https://gist.github.com/raw/4686647/ubuntu-install-google.bash -O - | sudo bash
+    sudo apt-get install -y google-chrome-stable
+fi
 
 if [[ -z `command -v "gits"` ]]; then
     cd /usr/local/src
@@ -41,7 +69,31 @@ if [[ -z `command -v "hub"` ]]; then
     $ chmod +x ~/bin/hub
 fi
 
-wget --no-check-certificate -q -O - https://raw.github.com/iwfmp/dot-f-ings/master/install-general | sh
+if [[ -z `command -v keepassc` ]]; then
+  [[ ! -d /var/empty ]] && sudo mkdir -p /var/empty
+  sudo apt-get build-dep python-crypto
+
+  githubRepos="dlitz/pycrypto raymontag/kppy raymontag/keepassc"
+  for githubRepo in $githubRepos; do
+    repoName=`echo ${githubRepo} | awk -F/ '{print $2}'`
+    repoLocation=/usr/local/src/${repoName}
+
+    sudo git clone https://github.com/${githubRepo} $repoLocation
+    cd $repoLocation
+
+    sudo python3.3 setup.py build
+    sudo python3.3 setup.py install
+  done
+fi
+
+# ============================================================================================================================
+# * Remove unnecessary programs
+# ============================================================================================================================
+sudo apt-get purge -y brasero banshee gnomine tomboy gedit gwibber aisleriot \
+empathy ubuntuone-installer libreoffice-math shotwell libreoffice-draw totem \
+evince seahorse deja-dup gnome-sudoku gbrainy gnome-mahjongg libreoffice-impress sni-qt
+
+sudo apt-get upgrade && sudo apt-get clean && sudo apt-get autoremove
 
 [[ ! -d $HOME/.fonts ]] && mkdir $HOME/.fonts
 ln -sf $PWD/lib/ubuntu-mono-powerline $HOME/.fonts/ubuntu-mono-powerline
@@ -51,3 +103,4 @@ cd $HOME/.zsh/lib/zsh-solarized
 ./set_dark.sh
 cd -
 
+gconftool-2 -s /apps/metacity/general/num_workspaces --type int 5
