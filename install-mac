@@ -7,43 +7,12 @@ brew install midnight-commander zsh ack vim nginx
 brew install git tig git-flow gitslave hub
 brew install tmux wemux
 
-curl -s https://raw.github.com/fbeeper/fBootstrap/master/git/git.sh | sh
+bash $HOME/install-general
 
-if [[ -f ~/.gitslave ]]; then
-    cd $HOME
-    git init
-    git remote add origin git@github.com:iwfmp/dot-f-ings.git
-    git pull origin master
-    gits populate
-fi
-
-# Cloning submodules and install procedure
-for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
-do
-    cd $dir
-    [[ -e .giternal.yml ]] && giternal update
-    cd -
-done
-
-ln -sf $HOME/.emacs.d/init/.emacs.el $HOME/.emacs > /dev/null 2>&1
-ln -sf $HOME/.git.d/init/.gitconfig $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.git.d/init/.tigrc $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.tmux/init/.tmux.conf $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.tmux/init/.tmux-powerlinerc $HOME/ > /dev/null 2>&1
-
-ln -sf $HOME/.tmux/init/powerline.sh $HOME/.tmux/lib/tmux-powerline/themes/ > /dev/null 2>&1
-
-chsh -s /bin/zsh
-rm $HOME/.bash*  > /dev/null 2>&1
-rm $HOME/.profile  > /dev/null 2>&1
-
-brew cask install aquamacs adium atext bartender burn ccleaner cinch clamxav \
-cloudapp cord cyberduck divvy filezilla firefox flux google-chrome google-drive \
-google-music-manager growlnotify handbrake hazel iterm2 keepassx keyremap4macbook licecap \
-linkinus little-snitch macvim netnewswire nvalt onyx path-finder postbox quicksilver \
-screenhero shiftit shortcat simple-comic sizeup skim skitch skype sparrow spectacle \
-sublime-text teamviewer textexpander things time-out transmission tunnelblick unison \
-viscosity vlc --force
+brew cask install google-chrome cyberduck iterm2 keepassx keyremap4macbook spectacle skype sublime-text teamviewer time-out transmission onyx quicksilver
+brew cask install vlc firefox filezilla burn clamxav google-drive cloudapp cord google-music-manager handbrake
+brew cask install netnewswire screenhero simple-comic skitch skim nvalt licecap adium unison tunnelblick
+brew cask install viscosity atext bartender growlnotify hazel shortcat sparrow textexpander things linkinus little-snitch path-finder postbox
 
 cd $HOME/Downloads
 curl -o Solarized-Dark.itermcolors http://www.iterm2.com/hostedcolors/Solarized%20Dark.itermcolors

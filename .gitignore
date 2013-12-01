@@ -8,8 +8,9 @@
 /.local/
 /.emacs.d/
 
-!install
+!install-linux
 !install-mac
+!install-general
 !uninstall
 !update
 !.gitignore

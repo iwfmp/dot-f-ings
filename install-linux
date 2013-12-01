@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Add the ability to use apt-add-repository, else it doesn't exist.
+sudo apt-get install -y python-software-properties gconf2 xclip
+sudo apt-get install -y midnight-commander zsh ack vim nginx git tig git-flow gitslave hub tmux wemux mercurial
+
+if [[ -z `command -v "gits"` ]]; then
+    cd /usr/local/src
+    sudo git clone git://gitslave.git.sourceforge.net/gitroot/gitslave/gitslave
+    cd gitslave
+    sudo make
+    sudo make install -C contrib
+fi
+
+if [[ -z `command -v "mc"` ]]; then
+    sudo apt-get build-dep mc
+    cd /usr/local/src
+    sudo git clone https://github.com/MidnightCommander/mc.git
+    cd mc
+    sudo ./autogen.sh && sudo ./configure && sudo make && sudo make clean install
+fi
+
+if [[ -z `command -v "tmux"` ]]; then
+    sudo apt-get build-dep tmux
+    cd /usr/local/src
+    sudo git clone https://github.com/ThomasAdam/tmux.git
+    cd tmux
+    sudo ./autogen.sh && sudo ./configure && sudo make && sudo make clean install
+fi
+
+if [[ -z `command -v "wemux"` ]]; then
+    ln -s $HOME/.tmux/lib/wemux/wemux $HOME/.tmux/bin/
+    sudo cp $HOME/.tmux/lib/wemux/wemux.conf.example /usr/local/etc/wemux.conf
+    sudo sed -i "s/change_this/$USER/g" /usr/local/etc/wemux.conf
+fi
+
+bash $HOME/install-general
+
+[[ ! -d $HOME/.fonts ]] && mkdir $HOME/.fonts
+ln -sf $PWD/lib/ubuntu-mono-powerline $HOME/.fonts/ubuntu-mono-powerline
+fc-cache -vf $HOME/.fonts > /dev/null 2>&1
+
+cd $HOME/.zsh/lib/zsh-solarized
+./set_dark.sh
+cd -
+
