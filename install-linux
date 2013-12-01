@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# ============================================================================================================================
+# * Basic packages
+# ============================================================================================================================
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install -y software-properties-common gconf2 gnome-panel nautilus-dropbox gnome-panel
+sudo apt-get install -y python-software-properties g++ make indicator-weather xclip xsel git-flow
+sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh rkhunter gnupg zsh ack
+sudo apt-get install -y vlc pidgin thunderbird abiword gimp flashplugin-installer kupfer remmina xchat fogger
+
+# ============================================================================================================================
+# * Packages from PPAs
+# ============================================================================================================================
+sudo add-apt-repository -y ppa:aguignard/ppa/ubuntu `# tig`
+sudo add-apt-repository -y ppa:cassou/emacs `# emacs`
+sudo add-apt-repository -y ppa:alexx2000/doublecmd `# double commander`
+sudo add-apt-repository -y ppa:webupd8team/sublime-text-2 `# sulime text 2`
+sudo apt-add-repository -y ppa:blueyed/ppa `# vim`
+sudo add-apt-repository -y ppa:fkrull/deadsnakes `# python3`
+sudo add-apt-repository -y ppa:eugenesan/ppa `# midnight commander`
+sudo add-apt-repository -y ppa:pi-rho/dev `# tmux`
+sudo add-apt-repository -y ppa:chris-lea/node.js `# nodejs`
+sudo add-apt-repository -y ppa:nginx/stable `# nginx`
+sudo add-apt-repository -y ppa:iaz/git `# git`
+sudo add-apt-repository -y ppa:mercurial-ppa/releases `# mercurial`
+sudo add-apt-repository -y ppa:keepassx/daily `# keepassx`
+sudo add-apt-repository -y ppa:upubuntu-com/chat `# skype`
+sudo add-apt-repository -y ppa:skype-wrapper/ppa `# skype-wrapper`
+sudo add-apt-repository -y ppa:dhor/myway `# xnview`
+sudo add-apt-repository -y ppa:adamreichold/qpdfview-dailydeb `# qpdfview`
+sudo apt-get update && sudo apt-get upgrade
+
+sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python-dev3.3 mc tmux xnview
+sudo apt-get install -y skype skype-wrapper mercurial sublime-text-2 keepassx nginx git nodejs qpdfview
+
+# ============================================================================================================================
+# * Manual install packages
+# ============================================================================================================================
+if [[ -z `command -v "quicktile"` ]]; then
+    sudo apt-get install -y python-xlib python-dbus python-wnck
+    cd /usr/local/src
+    sudo git clone https://github.com/ssokolow/quicktile
+    cd quicktile
+    sudo ./setup.py install
+fi
+
+if [[ -z `command -v "google-chrome"` ]]; then
+    sudo apt-get install -y curl libxss1 libnss3-1d
+    wget -q -E https://gist.github.com/raw/4686647/ubuntu-install-google.bash -O - | sudo bash
+    sudo apt-get install -y google-chrome-stable
+fi
+
+if [[ -z `command -v "gits"` ]]; then
+    cd /usr/local/src
+    sudo git clone git://gitslave.git.sourceforge.net/gitroot/gitslave/gitslave
+    cd gitslave
+    sudo make
+    sudo make install -C contrib
+fi
+
+if [[ -z `command -v "wemux"` ]]; then
+    cd /usr/local/src
+    sudo git clone git://github.com/zolrath/wemux.git /usr/local/share/wemux
+    sudo ln -s /usr/local/share/wemux/wemux /usr/local/bin/wemux
+    sudo cp /usr/local/share/wemux/wemux.conf.example /usr/local/etc/wemux.conf
+    sudo sed -i "s/change_this/$USER/g" /usr/local/etc/wemux.conf
+fi
+
+if [[ -z `command -v "hub"` ]]; then
+    $ curl http://hub.github.com/standalone -sLo $HOME/bin/hub
+    $ chmod +x $HOME/bin/hub
+fi
+
+if [[ -z `command -v keepassc` ]]; then
+  [[ ! -d /var/empty ]] && sudo mkdir -p /var/empty
+  sudo apt-get build-dep python-crypto
+
+  githubRepos="dlitz/pycrypto raymontag/kppy raymontag/keepassc"
+  for githubRepo in $githubRepos; do
+    repoName=`echo ${githubRepo} | awk -F/ '{print $2}'`
+    repoLocation=/usr/local/src/${repoName}
+
+    sudo git clone https://github.com/${githubRepo} $repoLocation
+    cd $repoLocation
+
+    sudo python3.3 setup.py build
+    sudo python3.3 setup.py install
+  done
+fi
+
+# ============================================================================================================================
+# * Remove unnecessary programs
+# ============================================================================================================================
+sudo apt-get purge -y brasero banshee gnomine tomboy gedit gwibber aisleriot \
+empathy ubuntuone-installer libreoffice-math shotwell libreoffice-draw totem \
+evince seahorse deja-dup gnome-sudoku gbrainy gnome-mahjongg libreoffice-impress sni-qt
+
+sudo apt-get upgrade && sudo apt-get clean && sudo apt-get autoremove
+
+# ============================================================================================================================
+# * Fonts
+# ============================================================================================================================
+cd $HOME/Downloads
+git clone https://github.com/Lokaltog/powerline-fonts
+cd powerline-fonts
+mv * $HOME/.fonts/
+cd ..
+rm -rf powerline-fonts
+
+mkdir $HOME/.fonts.conf.d
+cp $HOME/.local.d/lib/powerline/font/PowerlineSymbols.otf $HOME/.fonts/
+cp $HOME/.local.d/lib/powerline/font/10-powerline-symbols.conf $HOME/.fonts/
+fc-cache -vf $HOME/.fonts > /dev/null 2>&1

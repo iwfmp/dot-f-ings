@@ -7,53 +7,19 @@ brew install midnight-commander zsh ack vim nginx
 brew install git tig git-flow gitslave hub
 brew install tmux wemux
 
-sudo gem install tmuxinator giternal compass --no-ri --no-rdoc
+bash $HOME/install-general
 
-curl -s https://raw.github.com/fbeeper/fBootstrap/master/git/git.sh | sh
+brew cask install google-chrome cyberduck iterm2 keepassx keyremap4macbook spectacle skype sublime-text teamviewer time-out transmission onyx quicksilver
+brew cask install vlc firefox filezilla burn clamxav google-drive cloudapp cord google-music-manager handbrake
+brew cask install netnewswire screenhero simple-comic skitch skim nvalt licecap adium unison tunnelblick
+brew cask install viscosity atext bartender growlnotify hazel shortcat sparrow textexpander things linkinus little-snitch path-finder postbox
 
-if [[ -f ~/.gitslave ]]; then
-    cd $HOME
-    git init
-    git remote add origin git@github.com:iwfmp/dot-f-ings.git
-    git pull origin master
-    gits populate
-fi
-
-# Cloning submodules and install procedure
-for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
-do
-    cd $dir
-    [[ -e .giternal.yml ]] && giternal update
-    cd -
-done
-
-ln -sf $HOME/.emacs.d/init/.emacs.el $HOME/.emacs > /dev/null 2>&1
-ln -sf $HOME/.git.d/init/.gitconfig $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.git.d/init/.tigrc $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.tmux/init/.tmux.conf $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.tmux/init/.tmux-powerlinerc $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.zsh/init/.zlogout $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.zsh/init/.zshenv $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.zsh/init/.zshrc $HOME/ > /dev/null 2>&1
-
-ln -sf $HOME/.local.d/lib/spot/spot.sh $HOME/.local.d/bin/spot > /dev/null 2>&1
-ln -sf $HOME/.local.d/lib/bd/bd $HOME/.local.d/bin/bd > /dev/null 2>&1
-ln -sf $HOME/.local.d/lib/fzf/fzf $HOME/.local.d/bin/fzf > /dev/null 2>&1
-ln -sf $HOME/.tmux/init/powerline.sh $HOME/.tmux/lib/tmux-powerline/themes/ > /dev/null 2>&1
-
-chsh -s /bin/zsh
-rm $HOME/.bash*  > /dev/null 2>&1
-rm $HOME/.profile  > /dev/null 2>&1 
-
-brew cask install emacs quicksilver iterm2 keepassx onyx skype spectacle sublime-text time-out
-# brew cask install adium burn clamxav cord cyberduck filezilla cloudapp screenhero tunnelblick licecap skitch nvalt netnewswire vlc fluid
-# brew cask install google-drive unison firefox handbrake keyremap4macbook google-music-manager skim simple-comic transmission teamviewer
-# brew cask install atext alfred bartender growlnotify linkinus little-snitch path-finder shortcat sparrow textexpander viscosity things hazel
-# ? OmniFocus
-# Inky, Epic Browser, Bean, Tresorit, SpotFlux, Meld
-
+# ============================================================================================================================
+# * Fonts
+# ============================================================================================================================
 cd $HOME/Downloads
-curl -o Solarized-Dark.itermcolors http://www.iterm2.com/hostedcolors/Solarized%20Dark.itermcolors
-defaults write net.sourceforge.iTerm Displays -dict-add Solarized-Dark < Solarized-Dark.itermcolors
-BOOKMARKS=`defaults read net.sourceforge.iTerm Bookmarks | sed 's/\("Display Profile" = "[^"]*";/\1"Solarized-Dark";/'`
-defaults write net.sourceforge.iTerm Bookmarks "$BOOKMARKS"
+git clone https://github.com/Lokaltog/powerline-fonts
+cd powerline-fonts
+mv * ~/Library/Fonts/
+cd ..
+rm -rf powerline-fonts
