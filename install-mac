@@ -14,8 +14,12 @@ brew cask install vlc firefox filezilla burn clamxav google-drive cloudapp cord 
 brew cask install netnewswire screenhero simple-comic skitch skim nvalt licecap adium unison tunnelblick
 brew cask install viscosity atext bartender growlnotify hazel shortcat sparrow textexpander things linkinus little-snitch path-finder postbox
 
+# ============================================================================================================================
+# * Fonts
+# ============================================================================================================================
 cd $HOME/Downloads
-curl -o Solarized-Dark.itermcolors http://www.iterm2.com/hostedcolors/Solarized%20Dark.itermcolors
-defaults write net.sourceforge.iTerm Displays -dict-add Solarized-Dark < Solarized-Dark.itermcolors
-BOOKMARKS=`defaults read net.sourceforge.iTerm Bookmarks | sed 's/\("Display Profile" = "[^"]*";/\1"Solarized-Dark";/'`
-defaults write net.sourceforge.iTerm Bookmarks "$BOOKMARKS"
+git clone https://github.com/Lokaltog/powerline-fonts
+cd powerline-fonts
+mv * ~/Library/Fonts/
+cd ..
+rm -rf powerline-fonts

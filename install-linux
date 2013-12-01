@@ -4,9 +4,10 @@
 # * Basic packages
 # ============================================================================================================================
 sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install -y python-software-properties software-properties-common gconf2 gnome-panel xclip xsel gnome-panel indicator-weather
-sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh rkhunter gnupg zsh ack git-flow
-sudo apt-get install -y vlc pidgin thunderbird abiword gimp flashplugin-installer kupfer remmina xchat fogger nautilus-dropbox
+sudo apt-get install -y software-properties-common gconf2 gnome-panel nautilus-dropbox gnome-panel
+sudo apt-get install -y python-software-properties g++ make indicator-weather xclip xsel git-flow
+sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh rkhunter gnupg zsh ack
+sudo apt-get install -y vlc pidgin thunderbird abiword gimp flashplugin-installer kupfer remmina xchat fogger
 
 # ============================================================================================================================
 # * Packages from PPAs
@@ -19,17 +20,19 @@ sudo apt-add-repository -y ppa:blueyed/ppa `# vim`
 sudo add-apt-repository -y ppa:fkrull/deadsnakes `# python3`
 sudo add-apt-repository -y ppa:eugenesan/ppa `# midnight commander`
 sudo add-apt-repository -y ppa:pi-rho/dev `# tmux`
-sudo add-apt-repository -y ppa:chris-lea/node.js `# node`
+sudo add-apt-repository -y ppa:chris-lea/node.js `# nodejs`
 sudo add-apt-repository -y ppa:nginx/stable `# nginx`
 sudo add-apt-repository -y ppa:iaz/git `# git`
 sudo add-apt-repository -y ppa:mercurial-ppa/releases `# mercurial`
 sudo add-apt-repository -y ppa:keepassx/daily `# keepassx`
-sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc) partner" `# skype`
+sudo add-apt-repository -y ppa:upubuntu-com/chat `# skype`
 sudo add-apt-repository -y ppa:skype-wrapper/ppa `# skype-wrapper`
+sudo add-apt-repository -y ppa:dhor/myway `# xnview`
+sudo add-apt-repository -y ppa:adamreichold/qpdfview-dailydeb `# qpdfview`
 sudo apt-get update && sudo apt-get upgrade
 
-sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python-dev3.3 mc tmux
-sudo apt-get install -y skype skype-wrapper mercurial sublime-text-2 keepassx nginx git node
+sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python-dev3.3 mc tmux xnview
+sudo apt-get install -y skype skype-wrapper mercurial sublime-text-2 keepassx nginx git nodejs qpdfview
 
 # ============================================================================================================================
 # * Manual install packages
@@ -95,12 +98,13 @@ evince seahorse deja-dup gnome-sudoku gbrainy gnome-mahjongg libreoffice-impress
 
 sudo apt-get upgrade && sudo apt-get clean && sudo apt-get autoremove
 
-[[ ! -d $HOME/.fonts ]] && mkdir $HOME/.fonts
-ln -sf $PWD/lib/ubuntu-mono-powerline $HOME/.fonts/ubuntu-mono-powerline
+# ============================================================================================================================
+# * Fonts
+# ============================================================================================================================
+cd $HOME/Downloads
+git clone https://github.com/Lokaltog/powerline-fonts
+cd powerline-fonts
+mv * ~/.fonts/
 fc-cache -vf $HOME/.fonts > /dev/null 2>&1
-
-cd $HOME/.zsh/lib/zsh-solarized
-./set_dark.sh
-cd -
-
-gconftool-2 -s /apps/metacity/general/num_workspaces --type int 5
+cd ..
+rm -rf powerline-fonts
