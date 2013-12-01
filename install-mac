@@ -7,8 +7,6 @@ brew install midnight-commander zsh ack vim nginx
 brew install git tig git-flow gitslave hub
 brew install tmux wemux
 
-sudo gem install tmuxinator giternal compass --no-ri --no-rdoc
-
 curl -s https://raw.github.com/fbeeper/fBootstrap/master/git/git.sh | sh
 
 if [[ -f ~/.gitslave ]]; then
@@ -32,18 +30,12 @@ ln -sf $HOME/.git.d/init/.gitconfig $HOME/ > /dev/null 2>&1
 ln -sf $HOME/.git.d/init/.tigrc $HOME/ > /dev/null 2>&1
 ln -sf $HOME/.tmux/init/.tmux.conf $HOME/ > /dev/null 2>&1
 ln -sf $HOME/.tmux/init/.tmux-powerlinerc $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.zsh/init/.zlogout $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.zsh/init/.zshenv $HOME/ > /dev/null 2>&1
-ln -sf $HOME/.zsh/init/.zshrc $HOME/ > /dev/null 2>&1
 
-ln -sf $HOME/.local.d/lib/spot/spot.sh $HOME/.local.d/bin/spot > /dev/null 2>&1
-ln -sf $HOME/.local.d/lib/bd/bd $HOME/.local.d/bin/bd > /dev/null 2>&1
-ln -sf $HOME/.local.d/lib/fzf/fzf $HOME/.local.d/bin/fzf > /dev/null 2>&1
 ln -sf $HOME/.tmux/init/powerline.sh $HOME/.tmux/lib/tmux-powerline/themes/ > /dev/null 2>&1
 
 chsh -s /bin/zsh
 rm $HOME/.bash*  > /dev/null 2>&1
-rm $HOME/.profile  > /dev/null 2>&1 
+rm $HOME/.profile  > /dev/null 2>&1
 
 brew cask install aquamacs adium atext bartender burn ccleaner cinch clamxav \
 cloudapp cord cyberduck divvy filezilla firefox flux google-chrome google-drive \
