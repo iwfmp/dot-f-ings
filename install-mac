@@ -7,8 +7,8 @@ brew install midnight-commander zsh ack vim nginx wget
 brew install git tig git-flow gitslave hub
 brew install tmux wemux
 
-curl -s https://raw.github.com/iwfmp/dot-f-ings/master/install-general | sh
-
+brew tap phinze/homebrew-cask
+brew install brew-cask
 brew cask install google-chrome cyberduck iterm2 keepassx keyremap4macbook spectacle skype sublime-text teamviewer time-out transmission onyx quicksilver cheatsheet
 # brew cask install vlc firefox filezilla burn clamxav google-drive cloudapp cord google-music-manager handbrake
 # brew cask install netnewswire screenhero simple-comic skitch skim nvalt licecap adium unison tunnelblick
