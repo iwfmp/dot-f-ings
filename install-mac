@@ -9,7 +9,8 @@ brew install tmux wemux
 
 brew tap phinze/homebrew-cask
 brew install brew-cask
-brew cask install google-chrome cyberduck iterm2 keepassx keyremap4macbook spectacle skype sublime-text teamviewer time-out transmission onyx quicksilver cheatsheet
+brew cask install google-chrome cyberduck iterm2 keepassx keyremap4macbook spectacle skype sublime-text 
+brew cask install teamviewer time-out transmission onyx quicksilver cheatsheet dropbox emacs
 # brew cask install vlc firefox filezilla burn clamxav google-drive cloudapp cord google-music-manager handbrake
 # brew cask install netnewswire screenhero simple-comic skitch skim nvalt licecap adium unison tunnelblick
 # brew cask install viscosity atext bartender growlnotify hazel shortcat sparrow textexpander things linkinus little-snitch path-finder postbox
