@@ -15,6 +15,7 @@ brew cask install teamviewer time-out transmission onyx quicksilver cheatsheet d
 # brew cask install netnewswire screenhero simple-comic skitch skim nvalt licecap adium unison tunnelblick
 # brew cask install viscosity atext bartender growlnotify hazel shortcat sparrow textexpander things linkinus little-snitch path-finder postbox
 
+# TODO: Install double commander and eve manually!
 # TODO: Deploy GUI & System configurations
 
 # ============================================================================================================================
