@@ -7,7 +7,7 @@ sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install -y software-properties-common gconf2 gnome-panel nautilus-dropbox
 sudo apt-get install -y python-software-properties g++ make xclip xsel git-flow meld
 sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh rkhunter gnupg zsh ack
-sudo apt-get install -y vlc pidgin thunderbird abiword gimp flashplugin-installer kupfer fogger
+sudo apt-get install -y vlc pidgin thunderbird abiword gimp flashplugin-installer kupfer fogger bleachbit
 sudo apt-get install -y transmission swfdec-gnome firefox
 
 # ============================================================================================================================
@@ -23,17 +23,13 @@ sudo add-apt-repository -y ppa:eugenesan/ppa `# midnight commander`
 sudo add-apt-repository -y ppa:pi-rho/dev `# tmux`
 sudo add-apt-repository -y ppa:chris-lea/node.js `# nodejs`
 sudo add-apt-repository -y ppa:nginx/stable `# nginx`
-sudo add-apt-repository -y ppa:mercurial-ppa/releases `# mercurial`
 sudo add-apt-repository -y ppa:keepassx/daily `# keepassx`
 sudo add-apt-repository -y ppa:upubuntu-com/chat `# skype`
 sudo add-apt-repository -y ppa:skype-wrapper/ppa `# skype-wrapper`
 sudo add-apt-repository -y ppa:dhor/myway `# xnview`
 sudo add-apt-repository -y ppa:adamreichold/qpdfview-dailydeb `# qpdfview`
-sudo add-apt-repository -y ppa:mamarley/quassel `# Quassel`
-sudo add-apt-repository -y ppa:oxan/whatpulse `# What Pulse`
-# cutting edge git versions for the shell, gtk, glib, clutter and many Gnome applications and utilities.
-sudo add-apt-repository -y ppa:ricotz/testing `# gnome shell and a lot of nuggets`
-sudo add-apt-repository -y ppa:gnome3-team/gnome3 `# gnome shell extensions and tweak tool`
+sudo add-apt-repository -y ppa:mamarley/quassel `# quassel`
+sudo add-apt-repository -y ppa:oxan/whatpulse `# whatpulse`
 sudo apt-get update && sudo apt-get upgrade
 
 sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python-dev3.3 mc tmux xnview quassel-qt4
@@ -71,11 +67,6 @@ if [[ -z `command -v "wemux"` ]]; then
     sudo ln -s /usr/local/share/wemux/wemux /usr/local/bin/wemux
     sudo cp /usr/local/share/wemux/wemux.conf.example /usr/local/etc/wemux.conf
     sudo sed -i "s/change_this/$USER/g" /usr/local/etc/wemux.conf
-fi
-
-if [[ -z `command -v "hub"` ]]; then
-    curl http://hub.github.com/standalone -sLo $HOME/bin/hub
-    chmod +x $HOME/bin/hub
 fi
 
 if [[ -z `command -v keepassc` ]]; then
