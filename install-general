@@ -38,7 +38,7 @@ fi
 gemFiles="tmuxinator giternal compass"
 for gemFile in $gemFiles
 do
-  [[ -z `command -v "${gemFile}"` ]] && sudo gem install ${gemFile} --no-ri --no-rdoc
+  [[ -z `command -v "${gemFile}"` ]] && gem install ${gemFile} --no-ri --no-rdoc
 done
 
 
