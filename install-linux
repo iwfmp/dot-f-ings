@@ -5,8 +5,8 @@
 # ============================================================================================================================
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install -y software-properties-common gconf2 gnome-panel nautilus-dropbox
-sudo apt-get install -y python-software-properties g++ make xclip xsel git-flow
-sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh rkhunter gnupg zsh ack
+sudo apt-get install -y python-software-properties g++ make xclip xsel git-flow gnupg zsh ack
+sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh-server openssh-client
 sudo apt-get install -y thunderbird gimp flashplugin-installer swfdec-gnome kupfer bleachbit meld
 sudo apt-get install -y transmission firefox fogger abiword vlc pidgin
 
@@ -33,6 +33,7 @@ sudo apt-get update && sudo apt-get upgrade
 
 sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python3.3-dev mc tmux xnview quassel-qt4
 sudo apt-get install -y skype-wrapper sublime-text keepassx nginx git nodejs qpdfview
+sudo service nginx restart
 # sudo apt-get install -y gdm gnome-shell gnome-tweak-tool
 
 # ============================================================================================================================
@@ -59,6 +60,7 @@ if [[ -z `command -v "gits"` ]]; then
     cd gitslave
     sudo make
     sudo make install -C contrib
+    sudo ln -s gits /usr/local/bin/
     cd
 fi
 
