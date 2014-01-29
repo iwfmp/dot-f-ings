@@ -8,7 +8,7 @@ if [[ ! -f ~/.gitconfig ]]; then
   echo "Checking for SSH key, generating one if it doesn't exist ..."
     [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa -C "$GITHUB_MAIL" -f ~/.ssh/id_rsa
 
-  echo "Copying ssh public key to Github. Please enter UserName and PassWord."    
+  echo "Copying ssh public key to Github. Please enter UserName and PassWord."
     sudo easy_install pip
     sudo pip install hub
     git hub whoami
@@ -26,6 +26,14 @@ if [[ ! -f ~/.gitslave ]]; then
     gits populate
 fi
 
+#Installing Gem Files
+gemFiles="tmuxinator giternal compass"
+for gemFile in $gemFiles
+do
+  [[ -z `command -v "${gemFile}"` ]] && sudo gem install ${gemFile} --no-ri --no-rdoc
+done
+
+
 # Cloning submodules and install procedure
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
@@ -33,11 +41,4 @@ do
     [[ -e .giternal.yml ]] && giternal update
     [[ -e install ]] && ./install
     cd -
-done
-
-#Installing Gem Files
-gemFiles="tmuxinator giternal compass"
-for gemFile in $gemFiles
-do
-  [[ -z `command -v "${gemFile}"` ]] && sudo gem install ${gemFile} --no-ri --no-rdoc
 done
