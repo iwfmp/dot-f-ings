@@ -9,7 +9,7 @@ if [[ ! -f ~/.gitconfig ]]; then
     [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa -C "$GITHUB_MAIL" -f ~/.ssh/id_rsa
 
   echo "Copying ssh public key to Github. Please enter UserName and PassWord."
-    sudo easy_install pip
+    sudo apt-get install -y python-pip
     sudo pip install hub
     git hub whoami
     git hub add-public-keys ~/.ssh/id_rsa.pub
