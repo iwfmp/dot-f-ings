@@ -44,6 +44,7 @@ if [[ -z `command -v "quicktile"` ]]; then
     sudo git clone https://github.com/ssokolow/quicktile
     cd quicktile
     sudo ./setup.py install
+    cd
 fi
 
 if [[ -z `command -v "google-chrome"` ]]; then
@@ -58,6 +59,7 @@ if [[ -z `command -v "gits"` ]]; then
     cd gitslave
     sudo make
     sudo make install -C contrib
+    cd
 fi
 
 if [[ -z `command -v "wemux"` ]]; then
