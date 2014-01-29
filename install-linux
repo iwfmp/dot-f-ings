@@ -62,31 +62,6 @@ if [[ -z `command -v "gits"` ]]; then
     cd
 fi
 
-if [[ -z `command -v "wemux"` ]]; then
-    cd /usr/local/src
-    sudo git clone git://github.com/zolrath/wemux.git /usr/local/share/wemux
-    sudo ln -s /usr/local/share/wemux/wemux /usr/local/bin/wemux
-    sudo cp /usr/local/share/wemux/wemux.conf.example /usr/local/etc/wemux.conf
-    sudo sed -i "s/change_this/$USER/g" /usr/local/etc/wemux.conf
-fi
-
-if [[ -z `command -v keepassc` ]]; then
-  [[ ! -d /var/empty ]] && sudo mkdir -p /var/empty
-  sudo apt-get build-dep python-crypto
-
-  githubRepos="dlitz/pycrypto raymontag/kppy raymontag/keepassc"
-  for githubRepo in $githubRepos; do
-    repoName=`echo ${githubRepo} | awk -F/ '{print $2}'`
-    repoLocation=/usr/local/src/${repoName}
-
-    sudo git clone https://github.com/${githubRepo} $repoLocation
-    cd $repoLocation
-
-    sudo python3.3 setup.py build
-    sudo python3.3 setup.py install
-  done
-fi
-
 # ============================================================================================================================
 # * Remove unnecessary programs
 # ============================================================================================================================
@@ -107,3 +82,26 @@ mv * $HOME/.fonts/
 cd ..
 rm -rf powerline-fonts
 fc-cache -vf $HOME/.fonts > /dev/null 2>&1
+
+# ============================================================================================================================
+# * Ruby
+# ============================================================================================================================
+# Install RVM
+# http://sirupsen.com/get-started-right-with-rvm/
+[[ -f "$HOME/.profile" ]] && rm $HOME/.profile
+curl -L https://get.rvm.io | bash -s stable
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc && bash
+
+# Install latest ruby - 2.0.0
+rvm install 2.0.0
+rvm use 2.0.0
+rvm --default 2.0.0
+rvm rubygems latest
+
+#Installing Gem Files
+# IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
+gemFiles="tmuxinator giternal compass"
+for gemFile in $gemFiles
+do
+  [[ -z `command -v "${gemFile}"` ]] && gem install ${gemFile} --no-ri --no-rdoc
+done

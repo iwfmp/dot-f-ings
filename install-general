@@ -34,14 +34,6 @@ if [[ ! -f ~/.gitslave ]]; then
     gits populate
 fi
 
-#Installing Gem Files
-gemFiles="tmuxinator giternal compass"
-for gemFile in $gemFiles
-do
-  [[ -z `command -v "${gemFile}"` ]] && sudo gem install ${gemFile} --no-ri --no-rdoc
-done
-
-
 # Cloning submodules and install procedure
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
