@@ -5,8 +5,8 @@
 # ============================================================================================================================
 sudo apt-get update && sudo apt-get upgrade
 sudo apt-get install -y software-properties-common gconf2 gnome-panel nautilus-dropbox
-sudo apt-get install -y python-software-properties g++ make xclip xsel git-flow
-sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh rkhunter gnupg zsh ack
+sudo apt-get install -y python-software-properties g++ make xclip xsel git-flow gnupg zsh ack
+sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh-server openssh-client
 sudo apt-get install -y thunderbird gimp flashplugin-installer swfdec-gnome kupfer bleachbit meld
 sudo apt-get install -y transmission firefox fogger abiword vlc pidgin
 
@@ -60,6 +60,7 @@ if [[ -z `command -v "gits"` ]]; then
     cd gitslave
     sudo make
     sudo make install -C contrib
+    sudo ln -s gits /usr/local/bin/
     cd
 fi
 
@@ -83,3 +84,26 @@ mv * $HOME/.fonts/
 cd ..
 rm -rf powerline-fonts
 fc-cache -vf $HOME/.fonts > /dev/null 2>&1
+
+# ============================================================================================================================
+# * Ruby
+# ============================================================================================================================
+# Install RVM
+# http://sirupsen.com/get-started-right-with-rvm/
+[[ -f "$HOME/.profile" ]] && rm $HOME/.profile
+curl -L https://get.rvm.io | bash -s stable
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc && bash
+
+# Install latest ruby - 2.0.0
+rvm install 2.0.0
+rvm use 2.0.0
+rvm --default 2.0.0
+rvm rubygems latest
+
+#Installing Gem Files
+# IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
+gemFiles="tmuxinator giternal compass"
+for gemFile in $gemFiles
+do
+  [[ -z `command -v "${gemFile}"` ]] && gem install ${gemFile} --no-ri --no-rdoc
+done
