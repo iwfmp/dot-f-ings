@@ -24,6 +24,7 @@ sudo add-apt-repository -y ppa:pi-rho/dev `# tmux`
 sudo add-apt-repository -y ppa:chris-lea/node.js `# nodejs`
 sudo add-apt-repository -y ppa:nginx/stable `# nginx`
 sudo add-apt-repository -y ppa:keepassx/daily `# keepassx`
+sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner" `# skype`
 sudo add-apt-repository -y ppa:skype-wrapper/ppa `# skype-wrapper`
 sudo add-apt-repository -y ppa:dhor/myway `# xnview`
 sudo add-apt-repository -y ppa:adamreichold/qpdfview-dailydeb `# qpdfview`
@@ -32,7 +33,7 @@ sudo add-apt-repository -y ppa:oxan/whatpulse `# whatpulse`
 sudo apt-get update && sudo apt-get upgrade
 
 sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python3.3-dev mc tmux xnview quassel-qt4
-sudo apt-get install -y skype-wrapper sublime-text keepassx nginx git nodejs qpdfview
+sudo apt-get install -y skype-wrapper sublime-text keepassx nginx git nodejs qpdfview skype
 # sudo apt-get install -y gdm gnome-shell gnome-tweak-tool
 
 # ============================================================================================================================
@@ -60,31 +61,6 @@ if [[ -z `command -v "gits"` ]]; then
     sudo make
     sudo make install -C contrib
     cd
-fi
-
-if [[ -z `command -v "wemux"` ]]; then
-    cd /usr/local/src
-    sudo git clone git://github.com/zolrath/wemux.git /usr/local/share/wemux
-    sudo ln -s /usr/local/share/wemux/wemux /usr/local/bin/wemux
-    sudo cp /usr/local/share/wemux/wemux.conf.example /usr/local/etc/wemux.conf
-    sudo sed -i "s/change_this/$USER/g" /usr/local/etc/wemux.conf
-fi
-
-if [[ -z `command -v keepassc` ]]; then
-  [[ ! -d /var/empty ]] && sudo mkdir -p /var/empty
-  sudo apt-get build-dep python-crypto
-
-  githubRepos="dlitz/pycrypto raymontag/kppy raymontag/keepassc"
-  for githubRepo in $githubRepos; do
-    repoName=`echo ${githubRepo} | awk -F/ '{print $2}'`
-    repoLocation=/usr/local/src/${repoName}
-
-    sudo git clone https://github.com/${githubRepo} $repoLocation
-    cd $repoLocation
-
-    sudo python3.3 setup.py build
-    sudo python3.3 setup.py install
-  done
 fi
 
 # ============================================================================================================================
