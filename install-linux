@@ -36,6 +36,8 @@ sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python3.3-
 sudo apt-get install -y skype-wrapper sublime-text keepassx nginx git nodejs qpdfview skype
 # sudo apt-get install -y gdm gnome-shell gnome-tweak-tool
 
+sudo npm install -g forever grunt-cli
+
 # ============================================================================================================================
 # * Manual install packages
 # ============================================================================================================================
@@ -94,16 +96,29 @@ fc-cache -vf $HOME/.fonts > /dev/null 2>&1
 curl -L https://get.rvm.io | bash -s stable
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc && bash
 
-# Install latest ruby - 2.0.0
-rvm install 2.0.0
-rvm use 2.0.0
-rvm --default 2.0.0
+# Install latest ruby - 1.9.3
+rvm install 1.9.3
+rvm use 1.9.3
+rvm --default 1.9.3
 rvm rubygems latest
 
 #Installing Gem Files
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
-gemFiles="tmuxinator giternal compass"
+gemFiles="tmuxinator giternal compass sass"
 for gemFile in $gemFiles
 do
   [[ -z `command -v "${gemFile}"` ]] && gem install ${gemFile} --no-ri --no-rdoc
 done
+
+# ============================================================================================================================
+# * DsnMasq
+# ============================================================================================================================
+# http://ihaveabackup.net/2012/06/28/using-wildcards-in-the-hosts-file/
+# http://xip.io/
+
+sudo sed -i "s/dns=/#dns=/g" /etc/NetworkManager/NetworkManager.conf
+sudo sed -i '/address=/c\address=\/.dev\/127.0.0.1' /etc/dnsmasq.conf
+
+sudo fuser -k 80/tcp
+sudo restart network-manager
+sudo service dnsmasq restart
