@@ -41,7 +41,7 @@ sudo npm install -g forever grunt-cli
 # ============================================================================================================================
 # * Manual install packages
 # ============================================================================================================================
-if [[ -z `command -v "quicktile"` ]]; then
+if [[ -z `command -v "quicktile.py"` ]]; then
     sudo apt-get install -y python-xlib python-dbus python-wnck
     cd /usr/local/src
     sudo git clone https://github.com/ssokolow/quicktile
