@@ -62,7 +62,7 @@ if [[ -z `command -v "gits"` ]]; then
     cd gitslave
     sudo make
     sudo make install -C contrib
-    sudo ln -s gits /usr/local/bin/
+    sudo ln -s /usr/local/src/gitslave/gits /usr/local/bin/
     cd
 fi
 
