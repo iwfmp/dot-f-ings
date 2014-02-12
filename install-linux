@@ -4,11 +4,11 @@
 # * Basic packages
 # ============================================================================================================================
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install -y software-properties-common gconf2 gnome-panel nautilus-dropbox
-sudo apt-get install -y python-software-properties g++ make xclip xsel git-flow gnupg zsh ack
-sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh-server openssh-client
-sudo apt-get install -y thunderbird gimp flashplugin-installer swfdec-gnome kupfer bleachbit meld
-sudo apt-get install -y transmission firefox fogger abiword vlc pidgin
+sudo apt-get install --ignore-missing -y software-properties-common gconf2 gnome-panel \
+python-software-properties g++ make xclip xsel git-flow gnupg zsh ack \
+cdargs antiword poppler-utils htop expect dnsmasq openssh-server openssh-client \
+thunderbird gimp flashplugin-installer swfdec-gnome kupfer bleachbit meld \
+transmission firefox fogger abiword vlc pidgin nautilus-dropbox
 
 # ============================================================================================================================
 # * Packages from PPAs
@@ -32,8 +32,8 @@ sudo add-apt-repository -y ppa:mamarley/quassel `# quassel`
 # sudo add-apt-repository -y ppa:oxan/whatpulse `# whatpulse`
 sudo apt-get update
 
-sudo apt-get install -y tig emacs-snapshot doublecmd-qt vim python3.3 python3.3-dev mc tmux xnview quassel-qt4
-sudo apt-get install -y skype-wrapper sublime-text keepassx nginx git nodejs qpdfview skype
+sudo apt-get install --ignore-missing -y tig emacs-snapshot doublecmd-qt vim python3.3 python3.3-dev \
+skype-wrapper sublime-text keepassx nginx git nodejs qpdfview skype mc tmux xnview quassel-qt4
 # sudo apt-get install -y gdm gnome-shell gnome-tweak-tool
 
 sudo npm install -g forever grunt-cli
@@ -69,7 +69,7 @@ fi
 # ============================================================================================================================
 # * Remove unnecessary programs
 # ============================================================================================================================
-sudo apt-get purge -y brasero banshee gnomine tomboy gedit gwibber aisleriot \
+sudo apt-get purge --ignore-missing -y brasero banshee gnomine tomboy gedit gwibber aisleriot \
 empathy ubuntuone-installer libreoffice-math shotwell libreoffice-draw totem rhythmbox \
 evince seahorse deja-dup gnome-sudoku gbrainy libreoffice-impress sni-qt mahjongg
 
