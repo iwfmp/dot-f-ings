@@ -14,7 +14,7 @@ if [[ ! -f ~/.gitconfig ]]; then
     [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa -C "$GITHUB_MAIL" -f ~/.ssh/id_rsa
 
   echo "Copying public key to clipboard. Paste it into your Github account ..."
-    [[ -f ~/.ssh/id_rsa.pub ]] && cat ~/.ssh/id_rsa.pub | pbcopy
+    [[ -f ~/.ssh/id_rsa.pub ]] && cat ~/.ssh/id_rsa.pub | xsel -b
     open https://github.com/settings/ssh | xdg-open https://github.com/settings/ssh
 
   echo "Setting git global defaults..."
