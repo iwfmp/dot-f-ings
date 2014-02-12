@@ -94,7 +94,7 @@ fc-cache -vf $HOME/.fonts > /dev/null 2>&1
 # http://sirupsen.com/get-started-right-with-rvm/
 [[ -f "$HOME/.profile" ]] && rm $HOME/.profile
 curl -L https://get.rvm.io | bash -s stable
-echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> .bashrc && bash
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> $HOME/.bashrc && bash
 
 # Install latest ruby - 1.9.3
 rvm install 1.9.3
