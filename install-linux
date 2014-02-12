@@ -4,7 +4,7 @@
 # * Basic packages
 # ============================================================================================================================
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get install --ignore-missing -y software-properties-common gconf2 gnome-panel \
+sudo apt-get install -my software-properties-common gconf2 gnome-panel \
 python-software-properties g++ make xclip xsel git-flow gnupg zsh ack \
 cdargs antiword poppler-utils htop expect dnsmasq openssh-server openssh-client \
 thunderbird gimp flashplugin-installer swfdec-gnome kupfer bleachbit meld \
@@ -107,8 +107,8 @@ rvm rubygems latest
 gem install tmuxinator giternal compass --no-ri --no-rdoc
 
 # Needed because compass uses cutting edge bullshit
-gem uninstall sass
-gem install sass
+yes | gem uninstall --force --all sass
+gem install sass --no-ri --no-rdoc
 
 # ============================================================================================================================
 # * DsnMasq
