@@ -3,7 +3,7 @@
 # ============================================================================================================================
 # * Basic packages
 # ============================================================================================================================
-sudo apt-get update && sudo apt-get upgrade
+sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y software-properties-common gconf2 gnome-panel nautilus-dropbox
 sudo apt-get install -y python-software-properties g++ make xclip xsel git-flow gnupg zsh ack
 sudo apt-get install -y cdargs antiword poppler-utils htop expect dnsmasq openssh-server openssh-client
