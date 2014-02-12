@@ -71,7 +71,7 @@ fi
 # ============================================================================================================================
 sudo apt-get purge --ignore-missing -y brasero banshee gnomine tomboy gedit gwibber aisleriot \
 empathy ubuntuone-installer libreoffice-math shotwell libreoffice-draw totem rhythmbox \
-evince seahorse deja-dup gnome-sudoku gbrainy libreoffice-impress sni-qt mahjongg
+evince seahorse deja-dup gnome-sudoku gbrainy libreoffice-impress sni-qt mahjongg remmina
 
 sudo apt-get clean && sudo apt-get autoremove
 
