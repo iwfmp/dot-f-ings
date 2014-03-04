@@ -104,7 +104,7 @@ rvm rubygems latest
 
 #Installing Gem Files
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
-gem install tmuxinator giternal compass watson-ruby --no-ri --no-rdoc
+gem install tmuxinator giternal compass watson-ruby fzf --no-ri --no-rdoc
 
 # Needed because compass uses cutting edge bullshit
 yes | gem uninstall --force --all sass
