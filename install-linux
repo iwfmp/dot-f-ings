@@ -93,6 +93,7 @@ fc-cache -vf $HOME/.fonts > /dev/null 2>&1
 [[ -f "$HOME/.profile" ]] && rm $HOME/.profile
 curl -L https://get.rvm.io | bash -s stable
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> $HOME/.bashrc && bash
+source "$HOME/.rvm/scripts/rvm"
 
 # Install latest ruby - 2.1.1
 rvm install 2.1.1
@@ -102,11 +103,13 @@ rvm rubygems latest
 
 #Installing Gem Files
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
-gem install tmuxinator giternal compass watson-ruby fzf --no-ri --no-rdoc
+echo "gem: --no-document" > $HOME/.gemrc
+gem install bundler berkshelf
+gem install tmuxinator giternal compass fzf
 
 # Needed because compass uses cutting edge bullshit
 yes | gem uninstall --force --all sass
-gem install sass --no-ri --no-rdoc
+gem install sass
 
 # ============================================================================================================================
 # * DsnMasq
