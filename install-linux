@@ -34,7 +34,7 @@ sudo apt-get update
 sudo apt-get install --ignore-missing -y tig emacs-snapshot doublecmd-qt vim python3.3 python3.3-dev \
 skype-wrapper sublime-text keepassx nginx git nodejs qpdfview mc tmux xnview quassel-qt4
 
-sudo npm install -g forever grunt-cli
+sudo npm install -g forever grunt-cli spot
 
 # ============================================================================================================================
 # * Manual install packages
