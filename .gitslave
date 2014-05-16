@@ -1,6 +1,5 @@
 "git@github.com:iwfmp/emacs.git" ".emacs.d"
 "git@github.com:iwfmp/git.git" ".git.d"
-"git@github.com:iwfmp/linux.git" ".local.d"
 "git@github.com:iwfmp/midnight-commander.git" ".mc"
 "git@github.com:iwfmp/tmux.git" ".tmux"
 "git@github.com:iwfmp/zsh.git" ".zsh"
