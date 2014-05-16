@@ -3,4 +3,3 @@
 "git@github.com:iwfmp/midnight-commander.git" ".mc"
 "git@github.com:iwfmp/tmux.git" ".tmux"
 "git@github.com:iwfmp/zsh.git" ".zsh"
-"git@github.com:iwfmp/vagrant.git" "Projects/Vagrant"
