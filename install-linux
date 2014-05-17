@@ -8,7 +8,7 @@ sudo apt-get install -my software-properties-common gconf2 gnome-panel \
 python-software-properties g++ make xclip xsel git-flow gnupg zsh ack \
 cdargs antiword poppler-utils htop expect dnsmasq openssh-server openssh-client \
 thunderbird gimp flashplugin-installer swfdec-gnome kupfer bleachbit meld \
-transmission firefox fogger abiword vlc pidgin nautilus-dropbox
+transmission firefox fogger abiword vlc pidgin nautilus-dropbox silversearcher-ag
 
 # ============================================================================================================================
 # * Packages from PPAs
