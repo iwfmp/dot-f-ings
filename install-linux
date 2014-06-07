@@ -105,7 +105,7 @@ rvm rubygems latest
 
 #Installing Gem Files
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
-echo "gem: --no-document" > $HOME/.gemrc
+echo "install: --no-rdoc --no-ri --user\nupdate: --no-rdoc --no-ri" > $HOME/.gemrc
 gem install bundler berkshelf
 gem install tmuxinator giternal compass fzf
 
