@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# gem update --no-ri --no-rdoc && gem cleanup
+# gem update && gem cleanup
+# sudo npm update
 
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
