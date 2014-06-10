@@ -21,6 +21,7 @@ sudo apt-add-repository -y ppa:blueyed/ppa `# vim`
 sudo add-apt-repository -y ppa:fkrull/deadsnakes `# python3`
 sudo add-apt-repository -y ppa:eugenesan/ppa `# midnight commander`
 sudo add-apt-repository -y ppa:pi-rho/dev `# tmux`
+sudo add-apt-repository -y ppa:kalakris/tmux `# legacy tmux`
 sudo add-apt-repository -y ppa:chris-lea/node.js `# nodejs`
 sudo add-apt-repository -y ppa:nginx/stable `# nginx`
 sudo add-apt-repository -y ppa:keepassx/daily `# keepassx`
