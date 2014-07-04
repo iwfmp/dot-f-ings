@@ -94,9 +94,7 @@ source "$HOME/.rvm/scripts/rvm"
 
 # Install latest ruby - 2.1.1
 rvm install 2.1
-rvm use 2.1
-rvm --default 2.1
-rvm rubygems latest
+rvm use 2.1 --default 
 
 #Installing Gem Files
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
