@@ -98,13 +98,9 @@ rvm use 2.1 --default
 
 #Installing Gem Files
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
-echo "install: --no-rdoc --no-ri --user\nupdate: --no-rdoc --no-ri" > $HOME/.gemrc
+echo "gem: --no-ri --no-rdoc" > $HOME/.gemrc
 gem install bundler berkshelf
 gem install tmuxinator giternal compass fzf
-
-# Needed because compass uses cutting edge bullshit
-yes | gem uninstall --force --all sass
-gem install sass
 
 # ============================================================================================================================
 # * DsnMasq
