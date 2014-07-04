@@ -15,28 +15,25 @@ sudo add-apt-repository -y ppa:aguignard/ppa/ubuntu `# Tig`
 sudo add-apt-repository -y ppa:cassou/emacs `# Emacs`
 sudo add-apt-repository -y ppa:alexx2000/doublecmd `# Double Commander`
 sudo add-apt-repository -y ppa:webupd8team/sublime-text-2 `# Sublime Text 2`
-sudo apt-add-repository -y ppa:blueyed/ppa `# Vim`
 sudo add-apt-repository -y ppa:fkrull/deadsnakes `# Python3`
-sudo add-apt-repository -y ppa:eugenesan/ppa `# Midnight Commander`
 sudo add-apt-repository -y ppa:pi-rho/dev `# Tmux`
-sudo add-apt-repository -y ppa:kalakris/tmux `# Legacy Tmux`
 sudo add-apt-repository -y ppa:chris-lea/node.js `# NodeJS`
 sudo add-apt-repository -y ppa:nginx/stable `# NginX`
 sudo add-apt-repository -y ppa:keepassx/daily `# KeepassX`
 sudo add-apt-repository -y ppa:skype-wrapper/ppa `# Skype-Wrapper`
 sudo add-apt-repository -y ppa:dhor/myway `# XnView`
 sudo add-apt-repository -y ppa:adamreichold/qpdfview-dailydeb `# QPdfView`
-sudo add-apt-repository -y ppa:mamarley/quassel `# Quassel`
-sudo add-apt-repository -y ppa:ubuntu-x-swat/x-updates `# Nvidia Drivers`
 sudo add-apt-repository -y ppa:git-core/ppa `# Git`
 sudo add-apt-repository -y ppa:ondrej/php5 `# PHP5`
 # sudo add-apt-repository -y ppa:oxan/whatpulse `# whatpulse`
+# sudo add-apt-repository -y ppa:eugenesan/ppa `# Midnight Commander`
+# sudo add-apt-repository -y ppa:mamarley/quassel `# Quassel`
+# sudo add-apt-repository -y ppa:ubuntu-x-swat/x-updates `# Nvidia Drivers`
 sudo apt-get update
 
-sudo apt-get install --ignore-missing -y tig emacs-snapshot doublecmd-qt vim python3.3 python3.3-dev \
-skype-wrapper sublime-text keepassx nginx git nodejs qpdfview mc tmux xnview quassel-qt4 nvidia-current
-
-sudo npm install -g forever grunt-cli spot
+sudo apt-get install --ignore-missing -y tig emacs-snapshot doublecmd-qt vim python3 python3-dev \
+skype-wrapper sublime-text keepassx nginx git nodejs qpdfview mc tmux xnview quassel-qt4
+# sudo apt-get install -y nvidia-current
 
 # ============================================================================================================================
 # * Manual install packages
