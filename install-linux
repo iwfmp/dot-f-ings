@@ -5,7 +5,7 @@
 # ============================================================================================================================
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y software-properties-common python-software-properties \
-g++ gcc make xclip xsel gnupg zsh dnsmasq openssh-server vlc htop \
+g++ gcc make xclip xsel gnupg zsh dnsmasq openssh-server vlc htop bsdtar \
 flashplugin-installer swfdec-gnome kupfer cdargs nautilus-dropbox expect
 
 # ============================================================================================================================
