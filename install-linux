@@ -88,7 +88,7 @@ rvm use 2.1 --default
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
 echo "gem: --no-ri --no-rdoc" > $HOME/.gemrc
 gem install bundler berkshelf
-gem install tmuxinator giternal compass fzf
+gem install tmuxinator giternal compass fzf thyme
 
 # ============================================================================================================================
 # * DsnMasq
