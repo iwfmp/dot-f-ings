@@ -71,18 +71,6 @@ transmission-gtk unity-scope-gdrive cheese thunderbird gnome-mines remmina firef
 sudo apt-get autoclean && sudo apt-get autoremove
 
 # ============================================================================================================================
-# * Fonts
-# ============================================================================================================================
-cd $HOME/Downloads
-git clone https://github.com/Lokaltog/powerline-fonts
-cd powerline-fonts
-mkdir -p $HOME/.fonts
-mv * $HOME/.fonts/
-cd ..
-rm -rf powerline-fonts
-fc-cache -vf $HOME/.fonts > /dev/null 2>&1
-
-# ============================================================================================================================
 # * Ruby
 # ============================================================================================================================
 # Install RVM
@@ -94,7 +82,7 @@ source "$HOME/.rvm/scripts/rvm"
 
 # Install latest ruby - 2.1.1
 rvm install 2.1
-rvm use 2.1 --default 
+rvm use 2.1 --default
 
 #Installing Gem Files
 # IMPORTANT: Some gems might need symilnk from /usr/bin to /bin
