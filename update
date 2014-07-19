@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# gits pull origin master
 # gem update && gem cleanup
 # sudo npm update -g
 
