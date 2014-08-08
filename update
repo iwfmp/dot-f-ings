@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # gits pull origin master
-# gem update && gem cleanup
+# gem update --no-ri --no-rdoc && gem cleanup
 # sudo npm update -g
 
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
