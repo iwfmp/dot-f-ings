@@ -64,7 +64,7 @@ fi
 # ============================================================================================================================
 # * Remove unnecessary programs
 # ============================================================================================================================
-sudo apt-get purge --ignore-missing -y brasero banshee tomboy gedit gwibber xul-ext-ubufox \
+sudo apt-get purge --ignore-missing -y brasero banshee tomboy gwibber xul-ext-ubufox \
 empathy ubuntuone-installer libreoffice-math shotwell libreoffice-draw totem rhythmbox aisleriot \
 evince seahorse deja-dup gnome-sudoku gbrainy libreoffice-impress sni-qt gnome-mahjongg \
 transmission-gtk unity-scope-gdrive cheese thunderbird gnome-mines remmina firefox webbrowser-app
