@@ -14,7 +14,7 @@ kupfer nautilus-dropbox vlc flashplugin-installer swfdec-gnome
 sudo add-apt-repository -y ppa:aguignard/ppa/ubuntu `# Tig`
 sudo add-apt-repository -y ppa:cassou/emacs `# Emacs`
 sudo add-apt-repository -y ppa:alexx2000/doublecmd `# Double Commander`
-sudo add-apt-repository -y ppa:webupd8team/sublime-text-2 `# Sublime Text 2`
+sudo add-apt-repository -y ppa:webupd8team/sublime-text-3 `# Sublime Text 3`
 sudo add-apt-repository -y ppa:fkrull/deadsnakes `# Python3`
 sudo add-apt-repository -y ppa:pi-rho/dev `# Tmux`
 sudo add-apt-repository -y ppa:keepassx/daily `# KeepassX`
