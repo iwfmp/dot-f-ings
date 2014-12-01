@@ -82,9 +82,9 @@ curl -L https://get.rvm.io | bash -s stable
 echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"' >> $HOME/.bashrc && bash
 source "$HOME/.rvm/scripts/rvm"
 
-# Install latest ruby - 2.1.1
-rvm install 2.1
-rvm use 2.1 --default
+# Install latest ruby - 2.1.3
+rvm install 2.1.3
+rvm use 2.1.3 --default
 rvm docs generate
 
 #Installing Gem Files
