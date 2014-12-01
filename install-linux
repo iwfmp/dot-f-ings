@@ -30,10 +30,8 @@ sudo apt-get update
 
 sudo apt-get install --ignore-missing -y python3 python3-setuptools python3-dev \
 skype-wrapper keepassx xnview doublecmd-qt qpdfview emacs-snapshot \
-tig git mc tmux
+tig git mc tmux sublime-text
 # sudo apt-get install -y nvidia-current quassel-qt4 whatpulse
-
-sudo apt-get install sublime-text
 # IMPORTANT: Sublime Text 3 Needs SublimeLinter Plugins (Rubocop, JsHint, Flow)
 
 # ============================================================================================================================
