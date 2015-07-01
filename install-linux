@@ -6,7 +6,7 @@
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install --ignore-missing -y software-properties-common python-software-properties \
 g++ gcc make xclip xsel gnupg zsh dnsmasq openssh-server expect bsdtar cdargs htop \
-kupfer nautilus-dropbox vlc flashplugin-installer swfdec-gnome
+kupfer vlc flashplugin-installer swfdec-gnome
 
 # ============================================================================================================================
 # * Packages from PPAs
