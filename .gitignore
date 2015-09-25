@@ -1,10 +1,4 @@
 *
-/zsh/
-/tmux/
-/mc/
-/git/
-/local.d/
-/emacs/
 
 !install
 !update
