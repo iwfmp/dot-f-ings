@@ -1,17 +1,11 @@
 *
-/.zsh/
-/.vim/
-/.tmux/
-/.slmenu/
-/.mc/
-/.gitl/
-/.local/
-/.emacs.d/
+/zsh/
+/tmux/
+/mc/
+/git/
+/local.d/
+/emacs/
 
-!install-linux
-!install-mac
-!install-general
-!uninstall
-!update
+!install
 !.gitignore
 !.gitslave
