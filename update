@@ -1,0 +1,6 @@
+for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
+do
+    cd $dir
+    [[ -e .giternal.yml ]] && giternal update
+    cd -
+done
