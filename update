@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -eu
 
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do

@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -eu
 
 successfully() {
   $* || (echo "failed" 1>&2 && exit 1)
