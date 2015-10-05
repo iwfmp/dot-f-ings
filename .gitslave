@@ -1,4 +1,5 @@
 "git@github.com:iwfmp/emacs.git" "emacs"
+"git@github.com:iwfmp/fzf.git" "fzf"
 "git@github.com:iwfmp/git.git" "git"
 "git@github.com:iwfmp/midnight-commander.git" "mc"
 "git@github.com:iwfmp/tmux.git" "tmux"
