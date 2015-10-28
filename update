@@ -13,7 +13,7 @@ echo "======== Updating: Homebrew Apps/Casks ========"
 brew update && brew upgrade && brew cleanup && brew cask cleanup
 
 echo "======== Updating: Ruby Gems ========"
-gem update --no-ri --no-rdoc
+sudo gem update --no-ri --no-rdoc
 
 echo "======== Updating: Vagrant Plugins ========"
 vagrant plugin update
