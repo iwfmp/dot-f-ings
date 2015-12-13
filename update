@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eu
 
+# Ask for the administrator password upfront
+sudo -v
+
 for dir in `cat .gitslave | awk {'print $2'} | tr -d '"'`
 do
     cd $dir
