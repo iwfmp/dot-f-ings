@@ -13,7 +13,9 @@ do
 done
 
 echo "======== Updating: Homebrew Apps/Casks ========"
-brew update && brew upgrade && brew cleanup && brew cask cleanup
+brew update && brew upgrade
+curl -s https://gist.githubusercontent.com/atais/5d3ec79e67f221cb55b7/raw/f6e6b647e6f90939c016ba88e591529d143cb33d/cash_upgrade.sh | bash /dev/stdin
+brew cleanup && brew cask cleanup
 
 echo "======== Updating: Ruby Gems ========"
 sudo gem update --no-ri --no-rdoc
